@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilderFactory"/>
+<fullyQualifiedTypeName name="javax.xml.soap.Node"/>
+<fullyQualifiedTypeName name="org.w3c.dom.NamedNodeMap"/>
+<fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilder"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Document"/>
+<fullyQualifiedTypeName name="org.w3c.dom.NodeList"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Element"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Node"/>
+<fullyQualifiedTypeName name="parsing_xjc.PatientType"/>
+<fullyQualifiedTypeName name="javax.xml.bind.annotation.XmlRootElement"/>
+<fullyQualifiedTypeName name="javax.xml.bind.JAXBException"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="javax.xml.bind.JAXBContext"/>
+<fullyQualifiedTypeName name="javax.xml.bind.Unmarshaller"/>
+<fullyQualifiedTypeName name="org.sanchit.unmarshalling.Util"/>
+<fullyQualifiedTypeName name="org.sanchit.modals.MessageType"/>
+<fullyQualifiedTypeName name="org.sanchit.modals.HeaderType"/>
+<fullyQualifiedTypeName name="org.sanchit.modals.HeaderType.From"/>
+<fullyQualifiedTypeName name="org.sanchit.modals.SecurityType"/>
+<fullyQualifiedTypeName name="localhost.MeditabServer.MeditabServerProxy"/>
+<fullyQualifiedTypeName name="localhost.MeditabServer.InMessage"/>
+</qualifiedTypeNameHistroy>

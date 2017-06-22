@@ -1,0 +1,271 @@
+-------------------------Message Supported-------------------------
+
+--> NEWRX : Sent from LTC facility to the pharmacy
+
+--> CANRX: This is sent by the prescriber via the LTC system to the pharmacy 
+
+--> CancelResponse: Sent from the Pharmacy to facility
+
+--> Resupply: LTC --> Pharmacy
+
+--> Census: Message initiated by the LTC to Pharmacy to notify them about the census message.
+	This transaction can be used in three cases:
+		-- to notify the pharmacy of a new resident
+		-- a change to demographic detail of a resident
+		-- discharge patient
+		
+--> RxFill : Pharmacy --> LTC to notify the prescriber of the dispensing status of a prescription
+
+--> Verify: This message is sent from the Pharmacy to the LTC indicating that the NEWRX has been processed successfully at the pharmacy.
+	PCC does not return verify for any message 
+	
+--> Rxhistory request: Used by the LTC to request a list of all active orders from the pharmacy. 
+
+--> Rxhistory Response: Include MedicationDispensed information as well as Prescriber information.
+
+
+
+--> Communicatoin: All messages are exchanged synchronously by using the HTTP Post Method known as Restful web services
+
+
+--> Flow of the message: PCC will do a POST, including the message to be processed.  PCC wait untill response message or PCC communication time out expires.
+
+
+
+
+
+
+//----------------
+
+SCRIPT Pharmacy_Suiterx:
+--> What is PCC_Org_ID?
+
+--> What is PCC_Fac_ID?
+
+--> What is Ext_Fac_ID?
+
+--> What is Ext_Pharmacy_Id?
+
+--> What Is Ext_Pharmacy_code?
+
+SCRIPT Census_Suiterx
+
+
+--> In ADT what will be there in the to segment? Will it be NABP of the store or the facility id? If it's facility id then which facility id? If it's the facility id then the qualifier should be "C"?
+
+--> What will be there in the from segment for ADT message?
+
+
+--> What does Pharmacy Transaction means?
+
+--> While sending the NEW ORDER what will be there in the to and from segment?
+
+--> And when we send RXFILl what do you expect in the to and from segment
+
+//---------------------census message------------------------------------------------------
+<?xml version="1.0"?>
+<Message xmlns="http://www.ncpdp.org/schema/SCRIPT" release="006" version="010">
+	<Header>
+		<To Qualifier="P">5566448811</To>
+		<From Qualifier="C">MUS58410004</From>
+		<MessageID>139849</MessageID>
+		<SentTime>2017-02-27T19:05:32Z</SentTime>
+		<Security>
+			<UsernameToken>
+				<Username>pccSuiterx</Username>
+				<Password Type="PasswordDigest">KXLQVWeDeMSPPUfUqz+FTQnpS4c=</Password>
+				<Nonce>36e9386f18b84e3d9342be58f80893c9</Nonce>
+				<Created>2017-02-27T19:05:34.9Z</Created>
+			</UsernameToken>
+			<Sender>
+				<SecondaryIdentification>PCC_Census</SecondaryIdentification>
+			</Sender>
+			<Receiver>
+				<SecondaryIdentification>Intelligent Pharmacy Software</SecondaryIdentification>
+			</Receiver>
+		</Security>
+	</Header>
+	<Body>
+		<Census>
+			<Request>
+				<ChangeRequestType>A</ChangeRequestType>
+				<CensusEffectiveDate>2017-02-27</CensusEffectiveDate>
+			</Request>
+			<Facility>
+				<Identification>
+					<NPI>1000000266</NPI>
+				</Identification>
+			</Facility>
+			<Patient>
+				<Identification>
+					<PatientAccountNumber>11951</PatientAccountNumber>
+				</Identification>
+				<Name>
+					<LastName>Atest</LastName>
+					<FirstName>Suite</FirstName>
+					<MiddleName/>
+				</Name>
+				<Gender>M</Gender>
+				<DateOfBirth>
+					<Date>1988-02-10</Date>
+				</DateOfBirth>
+				<Address>
+					<AddressLine1>2225 Argemtoa Road</AddressLine1>
+					<City>Mineapolis</City>
+					<State>MN</State>
+					<ZipCode>55077</ZipCode>
+				</Address>
+				<PatientLocation>
+					<FacilityUnit>A</FacilityUnit>
+					<Bed>J</Bed>
+					<Room>110</Room>
+				</PatientLocation>
+			</Patient>
+			<Allergy>
+				<NoKnownAllergies>Y</NoKnownAllergies>
+				<AdverseEvent>
+					<ItemDescriptionLong>Not Available</ItemDescriptionLong>
+				</AdverseEvent>
+				<DrugProductCoded>
+					<ItemDescriptionLong>No Known Allergies</ItemDescriptionLong>
+				</DrugProductCoded>
+			</Allergy>
+		</Census>
+	</Body>
+</Message>
+
+
+//---------------------------------------------------
+
+<?xml version="1.0"?>
+<Message xmlns="http://www.ncpdp.org/schema/SCRIPT" version="010" release="006">
+	<Header>
+		<To Qualifier="P">5566447</To>
+		<From Qualifier="C">1000000266_37001018@pointclickcare.com</From>
+		<MessageID>5f92075028b6409091a911fb118a10ef</MessageID>
+		<SentTime>2017-03-07T16:04:57Z</SentTime>
+		<Security>
+			<UsernameToken>
+				<Username>pccSuiterx</Username>
+				<Password Type="PasswordDigest">11GmEfy/h/0mKkm5PrkHQlQfVAc=</Password>
+				<Nonce>ee390c066096468c904a70339f9cd611</Nonce>
+				<Created>2017-03-07T16:05:00.4Z</Created>
+			</UsernameToken>
+			<Sender>
+				<TertiaryIdentification>quick_code</TertiaryIdentification>
+			</Sender>
+			<Receiver>
+				<TertiaryIdentification>NABP</TertiaryIdentification>
+			</Receiver>
+		</Security>
+		<PrescriberOrderNumber>26481</PrescriberOrderNumber>
+	</Header>
+	<Body>
+		<NewRx>
+			<Pharmacy>
+				<Identification>
+					<NPI>8877665544</NPI>
+				</Identification>
+				<StoreName>SuiteRx Pharmacy</StoreName>
+				<Address>
+					<AddressLine1>N/A</AddressLine1>
+					<City>N/A</City>
+					<State>MO</State>
+					<ZipCode>00000</ZipCode>
+				</Address>
+				<CommunicationNumbers>
+					<Communication>
+						<Number>0000000000</Number>
+						<Qualifier>TE</Qualifier>
+					</Communication>
+				</CommunicationNumbers>
+			</Pharmacy>
+			<Prescriber>
+				<Identification>
+					<NPI>1044444333</NPI>
+				</Identification>
+				<Name>
+					<LastName>Anderson</LastName>
+					<FirstName>Walter</FirstName>
+					<MiddleName>A</MiddleName>
+					<Prefix>Dr.</Prefix>
+				</Name>
+				<Address>
+					<AddressLine1>2225 Argemtoa Road</AddressLine1>
+					<City>Mineapolis</City>
+					<State>MN</State>
+					<ZipCode>55077</ZipCode>
+				</Address>
+				<CommunicationNumbers>
+					<Communication>
+						<Number>6514562239</Number>
+						<Qualifier>TE</Qualifier>
+					</Communication>
+				</CommunicationNumbers>
+				<PrescriberAgent>
+					<LastName>Arora</LastName>
+					<FirstName>Kanika</FirstName>
+				</PrescriberAgent>
+			</Prescriber>
+			<Facility>
+				<Identification>
+					<NPI>1000000266</NPI>
+				</Identification>
+				<FacilityName>SuiteRx (Kanika)</FacilityName>
+				<CommunicationNumbers>
+					<Communication>
+						<Number>9056667890</Number>
+						<Qualifier>TE</Qualifier>
+					</Communication>
+				</CommunicationNumbers>
+			</Facility>
+			<Patient>
+				<Identification>
+					<PatientAccountNumber>11951</PatientAccountNumber>
+				</Identification>
+				<Name>
+					<LastName>Atest</LastName>
+					<FirstName>Suite</FirstName>
+					<MiddleName/>
+				</Name>
+				<Gender>M</Gender>
+				<DateOfBirth>
+					<Date>1988-02-10</Date>
+				</DateOfBirth>
+				<PatientLocation>
+					<FacilityUnit>A</FacilityUnit>
+					<Bed>J</Bed>
+					<Room>110</Room>
+				</PatientLocation>
+			</Patient>
+			<MedicationPrescribed>
+				<DrugDescription>Furosemide Tablet 20 MG</DrugDescription>
+				<DrugCoded>
+					<ProductCode>00054429731</ProductCode>
+					<ProductCodeQualifier>ND</ProductCodeQualifier>
+					<Strength>20MG</Strength>
+					<DrugDBCode>310429</DrugDBCode>
+					<DrugDBCodeQualifier>SCD</DrugDBCodeQualifier>
+				</DrugCoded>
+				<Quantity>
+					<Value>0</Value>
+					<CodeListQualifier>QS</CodeListQualifier>
+					<UnitSourceCode>AC</UnitSourceCode>
+					<PotencyUnitCode>C38046</PotencyUnitCode>
+				</Quantity>
+				<Directions>Give 1 tablet by mouth one time a day for Indigestion</Directions>
+				<Note>Prescriber written HOA:7:30AM START:03/08/2017 7:30AM</Note>
+				<Refills>
+					<Qualifier>PRN</Qualifier>
+				</Refills>
+				<Substitutions>0</Substitutions>
+				<WrittenDate>
+					<Date>2017-03-07</Date>
+				</WrittenDate>
+				<EffectiveDate>
+					<Date>2017-03-08</Date>
+				</EffectiveDate>
+			</MedicationPrescribed>
+		</NewRx>
+	</Body>
+</Message>

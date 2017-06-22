@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Message version="010" release="006" xmlns="http://www.surescripts.com/messaging">
+	<Header>
+		<To Qualifier="P">5565657</To>
+		<From Qualifier="D">6451880788001</From>
+		<MessageID>9a63ac69670a4147a570af501dfaee8c</MessageID>
+		<SentTime>2016-09-22T09:22:45.7Z</SentTime>
+		<SenderSoftware>
+			<SenderSoftwareDeveloper>Surescripts</SenderSoftwareDeveloper>
+			<SenderSoftwareProduct>Certification Testing</SenderSoftwareProduct>
+			<SenderSoftwareVersionRelease>2013</SenderSoftwareVersionRelease>
+		</SenderSoftware>
+		<PrescriberOrderNumber>NEWRX 1.7</PrescriberOrderNumber>
+	</Header>
+	<Body>
+		<NewRx>
+			<Patient>
+				<PatientRelationship>1</PatientRelationship>
+				<Identification>
+					<PayerID>ZZQ%PBM-UID-888877222-%VVVVAAAA1001</PayerID>
+					<PayerID>1XX-XX261L</PayerID>
+				</Identification>
+				<Name>
+					<LastName>Thrower</LastName>
+					<FirstName>David</FirstName>
+				</Name>
+				<Gender>M</Gender>
+				<DateOfBirth>
+					<Date>1933-02-22</Date>
+				</DateOfBirth>
+				<Address>
+					<AddressLine1>64 Violet Lane</AddressLine1>
+					<City>Howey In The Hills</City>
+					<State>FL</State>
+					<ZipCode>34737</ZipCode>
+				</Address>
+				<CommunicationNumbers>
+					<Communication>
+						<Number>3526685547</Number>
+						<Qualifier>TE</Qualifier>
+					</Communication>
+				</CommunicationNumbers>
+			</Patient>
+		</NewRx>
+	</Body>
+</Message>

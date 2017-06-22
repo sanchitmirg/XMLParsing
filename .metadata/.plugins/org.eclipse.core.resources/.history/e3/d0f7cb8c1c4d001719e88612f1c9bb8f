@@ -1,0 +1,30 @@
+package org.sanchit.webservice;
+
+import java.rmi.RemoteException;
+
+import localhost.MeditabServer.InMessage;
+import localhost.MeditabServer.MeditabServerProxy;
+
+public class Webservice {
+	
+	
+
+	public static void main(String[] args) {
+		
+		MeditabServerProxy proxy = new MeditabServerProxy();
+		
+		InMessage message[];
+		
+		try {
+			message = proxy.queryInBoxMessages("5565657", "", "", "", "", "", "", "", "N", "", "", "", "", "", "", "", "");
+			
+			InMessage messageId = message[4];
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
